@@ -1,58 +1,64 @@
 #include <iostream>
+
 using namespace std;
 
-int getSum(int);
+void printPrimeList(int a, int b) 
+{
+	int flag;
+	cout << "Prime Numbers between "<<a<<" and "<<b<<":\n";
+	for (int i = a; i <= b; i++) 
+	{
+		if (i == 1 || i == 0) 
+		continue;
+		flag = 1; 
+		for (int j = 2; j <= i / 2; ++j) 
+	{
+	if (i % j == 0)
+{
+		flag = 0;
+		break;
+}
+}
+	if (flag == 1) 
+	cout << i << " ";
+}
+}
+
+void getListprime(int begin)
+{
+	printPrimeList(begin , 100); 	
+}
+
+void getListprime()
+{
+	printPrimeList(0,100); 
+
+}
+
+void getListprime(int begin,int end)
+{
+	printPrimeList(begin, end); 
+}
 
 int main()
 {
-    int n;
-    int sum;
-    
-    do
-    {
-        cout << "Enter the number of input: ";
-        cin >> n;
-        
-        if(n != -1)
-        {
-            sum = getSum(n);
-            cout << "The sum is " << sum << endl;
-        }
-        
-        
-    }while(n != -1);
-    
-    return 0;
-}
+	int begin, end;
+		cout << "Enter two positive integers: \n";
+cin >> begin >> end; 
 
-int getSum(int n)
-{
-    int number; //To store numbers.
-    
-    int max = -1;
-    int min = 9999999;
-    int sum = 0;
-    
-    cout << "Enter " << n << " elements:\n";
-    for(int i = 0 ; i < n ; i++)
-    {
-        cin >> number;
-        
-        sum += number;
-        
-        if(max < number) //Found new maximum number
-        {
-            max = number;
-        }
-        
-        if(min > number) //Found new minimum number
-        {
-            min = number;
-        }
-    }
-    
-    sum = sum - max - min;
-    
-    return sum;
-    
-} 
+	if(begin <= 0 || end <=0) 
+	cout << "Invalid";
+
+	else
+	{
+		if(begin == end)
+		getListprime(begin);
+
+		else if(begin > end)
+		getListprime();
+
+	else
+	getListprime(begin,end);
+}
+	return 0;
+}
